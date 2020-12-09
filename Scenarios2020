@@ -1,6 +1,5 @@
 package com.scala.we35.workhome;
 import Array._
-import com.sun.org.apache.xalan.internal.xsltc.compiler.ForEach
 
 object Scenarios2020 {
 
