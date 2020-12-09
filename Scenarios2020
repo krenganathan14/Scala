@@ -1,5 +1,7 @@
-package com.scala.we35.workhome;
-import Array._
+/*Aim : Basic Scala workout(Methods/Pattern matching/Collections[Seq, Array, List, Map and Set,ArrayBuffer]/OOPS)
+Created Date : 14-Dec-2018 
+Latest Modified Date : 09-Dec-2020 */
+
 
 object Scenarios2020 {
 
