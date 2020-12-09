@@ -1,0 +1,412 @@
+package com.scala.we35.workhome;
+import Array._
+import com.sun.org.apache.xalan.internal.xsltc.compiler.ForEach
+
+object Scenarios2020 {
+
+  def biggestOf3Nos(a: Int, b: Int, c: Int) {
+    val biggestnos = if (a > b) if (a > c) a else c else if (b > c) b else c;
+    println("Biggest of three Number is:" + biggestnos);
+  }
+
+  def courseFee(str: String) {
+    var f = 0;
+    if (str == "bigdata") { print("bigdata fees Rs:"); f = 25000; print(f); }
+    else if (str == "spark") { print("spark fees Rs:"); f = 15000; print(f); }
+    else if (str == "datascience") { print("datascience fees Rs:"); f = 35000; print(f); }
+    else if (str == "deeplearning") { print("deeplearning fees Rs:"); f = 45000; print(f); }
+    else print("Invalid cource");
+    println();
+  }
+
+  def palindrome(str: String): String =
+    {
+      var strpal = "Palindrome";
+      var strnotpal = "Not Polindrome";
+      var rstr = str.reverse;
+      if (str == rstr) return strpal; else return strnotpal;
+    }
+
+  def isAllDigits(x: String) = x forall Character.isDigit;
+
+  def findOddOrEven(i: Int, j: Int) {
+    for (a <- i to j) {
+      if (a % 2 == 0) {
+        print("EvenNo:" + a);
+      } else {
+        print("OddNo:" + a);
+      }
+    }
+  }
+
+  def incrementBy3(i: Int, j: Int) {
+    //print to 21
+    for (i <- 0 to 21 by 3) print(i + "\t");
+    //print until 21, (21 not included )
+    println();
+    for (i <- 0 until 21 by 3) print(i + "\t");
+  }
+
+  def cubeOfNo(x: Int): Int = {
+    var i = 0; var j = 0; var k = 0;
+    var result = 0;
+    for (i <- 1 to x; j <- i to x; k <- j to x) {
+      if (i == x && j == x && k == x) {
+        result = i * j * k;
+      }
+    }
+    return result;
+  }
+
+  def calc(x: Int, y: Int, op: String): Any = {
+    if (op == "Add" || op == "Addition") {
+      return x + y;
+    } else if (op == "Sub" || op == "Subtraction") {
+      return x - y;
+    } else if (op == "Mul" || op == "Multiple") {
+      return x * y;
+    } else if (op == "Div" || op == "Divistion") {
+      if (y <= 0) {
+        return (x / 1).toDouble; //java.lang.ArithmeticException: / by zero handled
+      } else {
+        return (x / y).toDouble;
+      }
+    } else {
+      println("Invalid Operation....");
+    }
+  }
+
+  def returncheck(rent: Int, maintance: Double): Double =
+    {
+      val fullrent = rent + (rent * maintance).toDouble;
+      val fixedmaintance: Double = 18000 + 2500.00;
+      //return fullrent; //This will be consider as final return values to method.dont care about next lines.
+      fixedmaintance //this will be consider as return value in scala if the above return fullrent not there means.
+    }
+
+  def returncheck2(rent: Int, maintance: Double): (Int, Double) =
+    {
+      val fullrent = rent + (rent * maintance).toDouble;
+      val months = 2;
+      val fixedmaintance: Double = 18000 + 2500.00;
+      return (months, fullrent); //This will be consider as final return values to method.dont care about next lines.
+      (months, fixedmaintance) //this will be consider as return value in scala if the above return fullrent not there means.
+    }
+
+  def finddatatype[T](v: T) = v match {
+    case _: Int    => println(v + " is Integer")
+    case _: Float  => println(v + " is Float")
+    case _: String => println(v + " is String")
+    case _: Char   => println(v + " is Char")
+    case _         => println("Its Invalid/Unknown")
+  }
+
+  def metexception(numerator: Int, denominator: Int): Double =
+    {
+      var x: Double = 0.0f;
+      try {
+        x = (numerator / denominator).toDouble;
+        return x;
+      } catch {
+        case a: java.lang.ArithmeticException =>
+          {
+            println("Reached Catch block with Error:" + a)
+            x = (numerator / 1).toDouble;
+            return x;
+          }
+        case a: java.lang.Exception =>
+          {
+            println("Reached Catch block with Some other exception:" + a)
+            x = numerator / 1;
+            return x;
+
+          }
+      }
+
+    }
+
+  def BigNoInArray(x: Int*): Int = {
+    //println("Lenth of Array:" + x.length);
+    if (x.isEmpty) {
+      println("Array is Empty.")
+      return 0;
+    } else
+      return x.max;
+  }
+
+  def main(args: Array[String]): Unit =
+    {
+/************  1.Methods - Starts   ************/
+      /* Biggest of three Numbers */
+      //biggestOf3Nos(120, 40, 900);
+
+      /* Find Cource Fee */
+      //courseFee("deeplearning");
+      //courseFee("spark");
+
+      /* palindrome or not */
+      //println(palindrome("madam"));
+
+      /* Find all char digit or not */
+      //println(isAllDigits("test"));
+
+      /* odd or even */
+      //findOddOrEven(5, 20);
+
+      /* For loop to increment from 0 till 21 with the increment of 3 */
+      //incrementBy3(0, 21);
+
+      /* Write a for or while loop to print the cube of given Nos, result should be 4*4*4=64 */
+      //println(cubeOfNo(10));
+
+      /* Write a method to create a calculator accepts 3 arguments and return type of any */
+      //println(calc(100, 5, "Div"));
+
+      /* Try multiple return statements in a method and identify which one is really returning and what are the returns are ignored. */
+      //println("Final Rent:"+returncheck(18000,0.10));
+
+      /* Try creating a method with multiple return types. */
+      //println("Final Rent:"+returncheck2(18000,0.10));
+/************  1.Methods - End   ************/
+
+/************  2.Pattern matching -Start    ************/
+      /*. Write a program using case using pattern matching to find val is either Float or string or Boolean or Char etc... */
+      //finddatatype("Reyaansh");
+
+      /*  throws exception, in case of exception we have to handle in the catch block where it  */
+      //println("Metexception Result:" + metexception(10, 0));
+/************  2.Pattern matching -End    ************/
+
+/************  3.Collections: Seq, Array, List, Map and Set - Start  ************/
+      /* 20. Create an array, list and prove mutability and immutability and non-resizable properties. */
+      val arr = Array(1, 2, 3, 4, 5)
+      val list = List(6, 7, 8, 9, 10)
+      //mutable check
+      arr(1) = 20; // Array is mutable so its possible
+      //list(1)=40 // List immutable so it not possible
+      /* for (i <- 0 to arr.length - 1)
+        print(arr(i) + "\t"); */
+      /* for (no <- arr)
+        print(no + "\t");
+       println();*/
+      //arr.foreach(println)
+      //println(list);
+      //arr+= 20; // Array resizable is not possible. If want to resizable use scala.collection.mutable.ArrayBuffer - It will be Mutable & Resizable
+      //list+=40 // List resizable is not possible.(List is List) If want to resizable use scala.collection.mutable.ListBuffer -It will be Mutable & Resizable
+
+      /* 21. Create arraybuffer from scala.collection.mutable package and prove mutability and immutability and resizable properties. */
+      /*      println("From scala.collection.mutable.ArrayBuffer/ListBuffer:");
+      val arrbf = scala.collection.mutable.ArrayBuffer(1, 2, 3, 4, 5)
+      val listbf = scala.collection.mutable.ListBuffer(6, 7, 8, 9, 10)
+
+      arrbf.foreach(print)
+      println();
+      listbf.foreach(print)
+      println();
+      println("Update values through ArrayBuffer/ListBuffer:");
+      arrbf(1) = 44;
+      listbf(2) = 80;
+      arrbf.foreach(print)
+      println();
+      listbf.foreach(print)
+      println();
+      println("Add values through ArrayBuffer/ListBuffer:");
+      arrbf += 99;
+      listbf += 101;
+      arrbf.foreach(print)
+      println();
+      listbf.foreach(print)
+      println();
+      println("Remove values through ArrayBuffer/ListBuffer:");
+      arrbf -= 5;
+      listbf -= 10;
+      arrbf.foreach(print)
+      println();
+      listbf.foreach(print)*/
+
+      /* 22,32. Create a tuple of 4 fields and access the 2nd and 4 th fields and store in another tuple. */
+
+      //val tup = (1, 20000, "Mechanic", "Reyaansh");
+      /*def tup = (1, 20000, "Mechanic", "Reyaansh");
+      println(tup);
+      println(tup._2)
+      println(tup._4)
+
+      var (no, salary, dep, name) = tup;
+
+      println("No:" + no)
+      println("Salry:" + salary)
+      println("Dept:" + dep)
+      println("Name:" + name)
+
+      val cptuple = (salary, name)
+      val cptuple2 = (tup._2, tup._4)
+      println(cptuple);
+      println(cptuple2);
+      println(cptuple.getClass);
+      println(cptuple2.getClass);*/
+
+      /* 23. Find the maximum value out of (2,3,1,5,4) elements in the array*/
+      /*val maxarr = Array(2, 3, 1, 5, 4)
+      for (no <- maxarr)
+        print(no + "\t");
+      var posbf = new scala.collection.mutable.ArrayBuffer[Int]()
+      //println("Maximum Value of the Array is:" + maxarr.max);
+      println("\nPossition of Maximum Value of the Array is:" + maxarr.indexOf(maxarr.max));
+
+      /*24. Find the max and mi ue of (2,3,1,5,4) elements in the array and store these 2 values in another array. */
+      val minarr = Array(2, 3, 1, 5, 4)
+      //println("Minumum Value of the Array is:" + minarr.min);
+      println("Possition of Minumum Value of the Array is:" + minarr.indexOf(minarr.min));
+
+      var biggestNo = 0;
+      var smallestNo = 999;
+      var bpos = 0;
+      var spos = 0;
+      for (i <- 0 to maxarr.length - 1) {
+        if (maxarr(i) > biggestNo) {
+          biggestNo = maxarr(i)
+          bpos = i;
+        }
+        if (maxarr(i) < smallestNo) {
+          smallestNo = maxarr(i)
+          spos = i;
+        }
+      }
+      posbf += bpos;
+      posbf += spos;
+      println("biggestNo:" + biggestNo);
+      println("smallestNo:" + smallestNo);
+      println("biggestNo Possition:" + bpos);
+      println("smallestNo Possition:" + spos);
+      println("Bigest and Smallest Nos Possitions:");
+      posbf.foreach(println) */
+
+      /*25 .Create a method to find the highest value in the given array if the array is non empty and print it, you must pass array as an argument to the method.*/
+      //println("BiggestNos in Array:" + BigNoInArray(1,300,4,5,6,7,33));
+
+      /* 26.Write a program to create an Int List with 5 different value s using range and sum all the values */
+      /*var x = Range(96,100);
+      println("Sum of the Range values:" + x.sum);*/
+
+      /* 27. Write a program to create string list to store the values of Spark,Scala,Python,Java,Hadoop and count the number of elements in the List */
+      /*val strlist=List("Spark","Scala","Python","Java","Hadoop")
+      println("Elements in List:" + strlist);
+      println("The number of elements in List:" + strlist.size);*/
+
+      /* 28,29,30,31.Write a program to store (China,Beijing),(India,New Delhi),(USA,Washington),(UK,London) using Map */
+      /*val cmap = Map(("China" -> "Beijing"), ("India" -> "New Delhi"), ("USA" -> "Washington"), ("UK" -> "London"))
+      println("country Map:" + cmap);
+      //Find the capital of India
+      println("the capital of India:" + cmap.get("India"));
+      //Take only countries and store in an array and use foreach and println to print line by line of elements.
+      cmap.foreach(println)
+      println("Print line by line of elements only countries");
+      //cmap.foreach(x => println({ x._1 }))
+      //cmap.toArray.foreach(println)
+      var cnarray =cmap.toArray;
+      var cnset=cmap.toSet
+      cnarray.foreach(x => println({x._1}))
+      cnset.foreach(x => println({x._1}))*/
+
+      //32. Create a case class and apply the respective column name and datatype for the tuple created in step 22.
+      /*case class empstruct(id: Int, salary: Float, name: String, dept: String)
+      var casex = new empstruct(101, 20000, "Reyaansh", "Machanic")
+      println("ID:" + casex.id);
+      println("Salary:" + casex.salary);
+      println("Name:" + casex.name);
+      println("Dept:" + casex.dept);*/
+/************  3.Collections: Seq, Array, List, Map and Set - End  ************/
+
+/************  4.OOPS - Start  ***********/
+      /*Ref - this package: com.scala.we35.workhome.datasecurity for #33 to #40 */
+
+      //Print the number of words in a given sentence:
+      // Reads the line from the Console
+      println("Enter the sentence:");
+      val inputstr = scala.io.StdIn.readLine()
+      println(inputstr);
+      //Single line
+      //println(inputstr.split(" ").map(_.toLowerCase).groupBy(identity).mapValues(_.size));
+      //HardCode
+      val counts = scala.collection.mutable.Map.empty[String, Int].withDefaultValue(0)
+      var wc = 0;
+      for (Word <- inputstr.split(" ")) {
+        val word = Word.toLowerCase
+        counts(word) += 1
+        wc += 1;
+      }
+      println("Words count as details:" + counts);
+      println("Words count as details:" + counts);
+      println("Words count:" + wc);
+      //Extract only the words starts with h/H and store in an array.
+      println("the words starts with h/H and store in an array")
+      var arrhw = new scala.collection.mutable.ArrayBuffer[String]()
+      for (hWord <- inputstr.split(" ")) {
+        val result = hWord.charAt(0)
+        //println(result);
+        if (result.equals('h') || result.equals('H')) {
+          arrhw += hWord;
+        }
+      }
+      println("the words starts with h/H in an array:" + arrhw)
+
+/************  4.OOPS - End  ************/
+
+    }
+}
+--------------------------------------------------------------------------------------------------------------------
+
+package com.scala.we35.workhome.datasecurity
+
+class mask {
+  private val addhash = 100;
+  def hashMask(str: String): Int =
+    {
+      return str.hashCode() + 100;
+    }
+}
+
+--------------------------------------------------
+package com.scala.we35.workhome.datasecurity
+
+class endecode {
+  private val prefixstr = "aix";
+  def revEncode(str: String): String =
+    {
+      return prefixstr + str.reverse;
+    }
+
+  def revDecode(str: String): String =
+    {
+      return prefixstr + str.reverse;
+    }
+}
+-------------------------------------------------
+package com.scala.we35.workhome.datasecurity
+
+object singleobject {
+
+  def main(args: Array[String]): Unit =
+    {
+      val objmask = new com.scala.we35.workhome.datasecurity.mask;
+      val objencode = new com.scala.we35.workhome.datasecurity.endecode;
+
+      val arrname = Array("Krish", "Rengnathan", "REYAANSH", "murthy")
+      arrname.foreach(println);
+      //loop the array elements, apply hashMask(name) for all 3 elements and println of the masked values.
+      println("Masked values.");
+      for (name <- arrname)
+        println(objmask.hashMask(name));
+
+      println("Loop the array created the revEncode(name) for all 3 elements");
+      val revEncodearrbf = scala.collection.mutable.ArrayBuffer();
+      for (name <- arrname)
+        println(objencode.revEncode(name))
+
+      println("Loop the array created the revDecode(name) for all 3 elements");
+      for (name <- arrname)
+        println(objencode.revDecode(objencode.revEncode(name)));
+    }
+}
+----------------------------------------------------------------------------------------------------------------------
